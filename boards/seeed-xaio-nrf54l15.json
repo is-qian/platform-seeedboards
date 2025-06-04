@@ -1,0 +1,36 @@
+{
+    "build": {
+      "cpu": "cortex-m4",
+      "f_cpu": "128000000L",
+      "mcu": "nRF54L15",
+      "zephyr": {
+        "variant": "nrf52dk_nrf52832"
+     }
+    },
+    "connectivity": [
+      "bluetooth"
+    ],
+    "debug": {
+      "default_tools": [
+        "cmsis-dap"
+      ],
+      "jlink_device": "nRF54L15",
+      "openocd_target": "nordic/nrf54l.cfg",
+      "svd_path": "nrf54l15.svd"
+    },
+    "frameworks": [
+      "zephyr"
+    ],
+    "name": "Makerdiary nRF54l15-MDK",
+    "upload": {
+      "maximum_ram_size": 262144,
+      "maximum_size": 1572864,
+      "protocol": "openocd",
+      "protocols": [
+        "cmsis-dap",
+        "jlink"
+      ]
+    },
+    "url": "https://wiki.seeedstudio.com/XIAO_BLE",
+    "vendor": "Seeed Studio"
+  }
