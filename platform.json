@@ -24,6 +24,10 @@
     "espidf": {
       "package": "framework-espidf",
       "script": "builder/frameworks/espidf.py"
+    },
+    "zephyr": {
+      "package": "framework-zephyr",
+      "script": "builder/frameworks/zephyr.py"
     }
   },
   "packages": {
@@ -220,6 +224,12 @@
       "optionalVersions": [
         "~2.50400.0"
       ]
+    },
+    "framework-zephyr": {
+      "type": "framework",
+      "optional": true,
+      "owner": "platformio",
+      "version": "~2.20701.0"
     },
     "tool-adafruit-nrfutil": {
       "owner": "platformio",

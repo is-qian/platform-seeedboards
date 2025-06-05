@@ -48,7 +48,8 @@ class SeeedstudioPlatform(PlatformBase):
             Architecture = "rpi"
         if "52840" in board_name:
             Architecture = "nrf"
-
+        if "54l15" in board_name:
+            Architecture = "nrf"
         if "samd" in board_name:
             Architecture = "samd"
         if "mg24" in board_name:
@@ -93,7 +94,8 @@ class SeeedstudioPlatform(PlatformBase):
         
         if "52840" in board_name:
             Architecture = "nrf"
-        
+        if "54l15" in board_name:
+            Architecture = "nrf"
         if "samd" in board_name:
             Architecture = "samd"
         if "mg24" in board_name:
@@ -125,6 +127,8 @@ class SeeedstudioPlatform(PlatformBase):
             Architecture = "rpi"
         
         if "52840" in board_name:
+            Architecture = "nrf"
+        if "54l15" in board_name:
             Architecture = "nrf"
         if "samd" in board_name:
             Architecture = "samd"

@@ -35,6 +35,14 @@ def configure_nrf_default_packages(self, variables, targets):
             self.frameworks["arduino"][
                 "script"
             ] = "builder/board_build/nrf/arduino-core-mbed.py"
+            
+        if "nrf54l15" in board:
+            for p in self.packages:
+                if p in ("tool-cmake", "tool-dtc", "tool-ninja"):
+                    self.packages[p]["optional"] = False
+            self.packages["toolchain-gccarmnoneeabi"]["version"] = "~1.80201.0"
+            if not IS_WINDOWS:
+                self.packages["tool-gperf"]["optional"] = False
 
     if set(["bootloader", "erase"]) & set(targets):
         self.packages["tool-nrfjprog"]["optional"] = False
@@ -98,16 +106,19 @@ def _add_nrf_default_debug_tools(self, board):
             }
 
         else:
+            openocd_target = debug.get("openocd_target")
+            assert openocd_target, ("Missing target configuration for %s" %
+                                    board.id)
             server_args = [
                 "-s", "$PACKAGE_DIR/openocd/scripts",
-                "-f", "interface/%s.cfg" % link
+                "-f", "interface/%s.cfg" % link,
+                "-f", "target/%s" % openocd_target
             ]
             if link == "stlink":
                 server_args.extend([
                     "-c",
                     "transport select hla_swd; set WORKAREASIZE 0x4000"
                 ])
-            server_args.extend(["-f", "target/nrf52.cfg"])
             debug["tools"][link] = {
                 "server": {
                     "package": "tool-openocd",
